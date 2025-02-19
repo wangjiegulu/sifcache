@@ -1,7 +1,8 @@
-package com.wangjiegulu.sifcache.ext.sif.impl.redis
+package com.wangjiegulu.sifcache_lib.impl.redis
 
-import com.wangjiegulu.sifcache.ext.sif.*
-import com.wangjiegulu.sifcache.ext.sif.keyparts.SifWherePart
+import com.wangjiegulu.sifcache_lib.*
+import com.wangjiegulu.sifcache_lib.keyparts.SifWherePart
+import com.wangjiegulu.sifcache_lib.*
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.data.redis.core.RedisTemplate

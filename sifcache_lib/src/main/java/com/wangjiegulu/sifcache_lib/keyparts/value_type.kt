@@ -1,6 +1,6 @@
-package com.wangjiegulu.sifcache.ext.sif.keyparts
+package com.wangjiegulu.sifcache_lib.keyparts
 
-import com.wangjiegulu.sifcache.ext.sif.SifEvent
+import com.wangjiegulu.sifcache_lib.SifEvent
 
 /**
  * Key 第二部分：数据类型

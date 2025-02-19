@@ -2,7 +2,7 @@ package com.wangjiegulu.sifcache.controller
 
 import com.wangjiegulu.sifcache.basic.response.successJsonBody
 import com.wangjiegulu.sifcache.controller.aop.ControllerRedis
-import com.wangjiegulu.sifcache.ext.sif.*
+import com.wangjiegulu.sifcache_lib.*
 import com.wangjiegulu.sifcache.model.BioBlock
 import com.wangjiegulu.sifcache.sif_default.WhereByBlockId
 import com.wangjiegulu.sifcache.sif_default.WhereByUserId

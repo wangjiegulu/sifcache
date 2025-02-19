@@ -1,9 +1,9 @@
-package com.wangjiegulu.sifcache.ext.sif
+package com.wangjiegulu.sifcache_lib
 
-import com.wangjiegulu.sifcache.ext.sif.keyparts.SifBizPart
-import com.wangjiegulu.sifcache.ext.sif.keyparts.SifBizPartString
-import com.wangjiegulu.sifcache.ext.sif.keyparts.SifValueTypePart
-import com.wangjiegulu.sifcache.ext.sif.keyparts.SifWherePart
+import com.wangjiegulu.sifcache_lib.keyparts.SifBizPart
+import com.wangjiegulu.sifcache_lib.keyparts.SifBizPartString
+import com.wangjiegulu.sifcache_lib.keyparts.SifValueTypePart
+import com.wangjiegulu.sifcache_lib.keyparts.SifWherePart
 
 /**
  * SIF Key 枚举

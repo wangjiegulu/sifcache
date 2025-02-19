@@ -1,8 +1,8 @@
 package com.wangjiegulu.sifcache.app.sif
 
-import com.wangjiegulu.sifcache.ext.sif.SifInstance
-import com.wangjiegulu.sifcache.ext.sif.SifKeysLoader
-import com.wangjiegulu.sifcache.ext.sif.impl.redis.distributed.SifDistributedRedisInstance
+import com.wangjiegulu.sifcache_lib.SifInstance
+import com.wangjiegulu.sifcache_lib.SifKeysLoader
+import com.wangjiegulu.sifcache_lib.impl.redis.distributed.SifDistributedRedisInstance
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.context.annotation.Bean

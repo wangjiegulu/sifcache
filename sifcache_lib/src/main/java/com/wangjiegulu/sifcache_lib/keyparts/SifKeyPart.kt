@@ -1,4 +1,4 @@
-package com.wangjiegulu.sifcache.ext.sif.keyparts
+package com.wangjiegulu.sifcache_lib.keyparts
 
 /**
  * Sif Key 部分

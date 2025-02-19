@@ -1,8 +1,12 @@
-package com.wangjiegulu.sifcache.ext.sif.impl.redis.distributed
+package com.wangjiegulu.sifcache_lib.impl.redis.distributed
 
-import com.wangjiegulu.sifcache.ext.sif.*
-import com.wangjiegulu.sifcache.ext.sif.impl.redis.AbstractSifRedisInstance
-import com.wangjiegulu.sifcache.ext.sif.keyparts.SifWherePart
+import com.wangjiegulu.sifcache_lib.*
+import com.wangjiegulu.sifcache_lib.impl.redis.AbstractSifRedisInstance
+import com.wangjiegulu.sifcache_lib.keyparts.SifWherePart
+import com.wangjiegulu.sifcache_lib.SifAssociateHandler
+import com.wangjiegulu.sifcache_lib.SifEvent
+import com.wangjiegulu.sifcache_lib.SifKey
+import com.wangjiegulu.sifcache_lib.TriggerReason
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.data.redis.connection.Message

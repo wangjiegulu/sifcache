@@ -1,8 +1,8 @@
-package com.wangjiegulu.sifcache.ext.sif.impl.redis.distributed
+package com.wangjiegulu.sifcache_lib.impl.redis.distributed
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo
-import com.wangjiegulu.sifcache.ext.kt.NoArg
-import com.wangjiegulu.sifcache.ext.sif.TriggerReason
+import com.wangjiegulu.sifcache_lib.ext.NoArg
+import com.wangjiegulu.sifcache_lib.TriggerReason
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 @NoArg

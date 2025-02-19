@@ -1,6 +1,6 @@
-package com.wangjiegulu.sifcache.ext.sif
+package com.wangjiegulu.sifcache_lib
 
-import com.wangjiegulu.sifcache.ext.sif.keyparts.SifWherePart
+import com.wangjiegulu.sifcache_lib.keyparts.SifWherePart
 
 /**
  * 级联处理：依赖的数据变更后触发的处理器

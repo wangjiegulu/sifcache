@@ -9,7 +9,7 @@ plugins {
 	id("io.spring.dependency-management") version "1.1.7"
 }
 
-group = "com.netease"
+group = "com.wangjiegulu"
 version = "0.0.1-SNAPSHOT"
 
 java {
@@ -20,11 +20,11 @@ java {
 
 
 allOpen {
-	annotation("com.wangjiegulu.sifcache.ext.kt.AllOpen")
+	annotation("com.wangjiegulu.sifcache.ext.AllOpen")
 }
 
 noArg {
-	annotation("com.wangjiegulu.sifcache.ext.kt.NoArg")
+	annotation("com.wangjiegulu.sifcache.ext.NoArg")
 }
 
 repositories {
@@ -35,6 +35,9 @@ dependencies {
 	// spring boot
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-validation")
+
+	implementation(project(":sifcache_lib"))
+
 	// redis
 	implementation("org.springframework.boot:spring-boot-starter-data-redis") {
 		exclude("io.lettuce", "lettuce-core")

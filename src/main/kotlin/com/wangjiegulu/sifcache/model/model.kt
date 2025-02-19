@@ -1,7 +1,7 @@
 package com.wangjiegulu.sifcache.model
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo
-import com.wangjiegulu.sifcache.ext.kt.NoArg
+import com.wangjiegulu.sifcache.ext.NoArg
 
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)

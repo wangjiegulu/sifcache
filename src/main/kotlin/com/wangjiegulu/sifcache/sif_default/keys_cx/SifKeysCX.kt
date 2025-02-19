@@ -1,10 +1,10 @@
 package com.wangjiegulu.sifcache.sif_default.keys_cx
 
-import com.wangjiegulu.sifcache.ext.sif.SifKeysLoader
-import com.wangjiegulu.sifcache.ext.sif.SifStringKey
-import com.wangjiegulu.sifcache.ext.sif.impl.redis.DefaultRedisDeleteAssociateHandler
-import com.wangjiegulu.sifcache.ext.sif.keyparts.SifValueTypePartString
-import com.wangjiegulu.sifcache.ext.sif.makeHandler
+import com.wangjiegulu.sifcache_lib.SifKeysLoader
+import com.wangjiegulu.sifcache_lib.SifStringKey
+import com.wangjiegulu.sifcache_lib.impl.redis.DefaultRedisDeleteAssociateHandler
+import com.wangjiegulu.sifcache_lib.keyparts.SifValueTypePartString
+import com.wangjiegulu.sifcache_lib.makeHandler
 import com.wangjiegulu.sifcache.model.BioBlock
 import com.wangjiegulu.sifcache.sif_default.WhereByUserId
 import com.wangjiegulu.sifcache.sif_default.keys_meta.SIF_VALUE_TYPE_MT__BLOCK

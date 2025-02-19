@@ -1,7 +1,7 @@
 package com.wangjiegulu.sifcache.sif_default
 
-import com.wangjiegulu.sifcache.ext.sif.keyparts.SifWhereEqFragment
-import com.wangjiegulu.sifcache.ext.sif.keyparts.SifWherePart
+import com.wangjiegulu.sifcache_lib.keyparts.SifWhereEqFragment
+import com.wangjiegulu.sifcache_lib.keyparts.SifWherePart
 
 //////////// Where 条件类 ////////////
 class WhereByUserId(

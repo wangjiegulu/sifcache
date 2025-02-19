@@ -1,4 +1,4 @@
-package com.wangjiegulu.sifcache.ext.sif.keyparts
+package com.wangjiegulu.sifcache_lib.keyparts
 
 /**
  * SipKey 的条件部分（第三方部分）的每个条件对象，目前只支持相等 eq

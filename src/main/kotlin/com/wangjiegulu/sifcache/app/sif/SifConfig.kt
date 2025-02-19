@@ -25,7 +25,7 @@ class SifConfig {
     @Bean
     fun defaultSifInstance(
         @Autowired cacheImpl: RedisTemplate<String, Any>,
-        @Autowired @Qualifier(com.wangjiegulu.sifcache.app.sif.QUALIFIER_SIF_INSTANCE_DEFAULT) keysLoaders: List<SifKeysLoader>
+        @Autowired @Qualifier(QUALIFIER_SIF_INSTANCE_DEFAULT) keysLoaders: List<SifKeysLoader>
     ): SifInstance {
         return SifDistributedRedisInstance(cacheImpl, keysLoaders)
 //        return SifSingleRedisInstance(cacheImpl, keysLoaders)

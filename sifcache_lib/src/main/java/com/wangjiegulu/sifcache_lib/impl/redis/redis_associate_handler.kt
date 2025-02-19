@@ -7,6 +7,7 @@ import com.wangjiegulu.sifcache_lib.keyparts.SifWherePart
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.data.redis.core.RedisOperations
+import java.time.Duration
 
 /**
  * 该 AssociateHandler 级联处理数据方式
@@ -48,7 +49,7 @@ class DefaultRedisDeleteAssociateHandler<WherePart : SifWherePart, T>(
  * - 如果 TriggerReason 是删除，则直接删除缓存
  * - 如果 TriggerReason 是新增或者变更，则更新缓存（如果缓存中存在）
  */
-class DefaultRedisReplaceIfPresentAssociateHandler<WherePart : SifWherePart, T>(
+class DefaultAssociateHandler<WherePart : SifWherePart, T>(
     isPreferHandleInTransaction: Boolean = true,
     val getWherePartsToDeleteFunc: (T) -> Array<WherePart>
 ) : AbstractSifAssociateHandler<RedisOperations<String, Any>, WherePart, T>(isPreferHandleInTransaction) {
@@ -75,7 +76,7 @@ class DefaultRedisReplaceIfPresentAssociateHandler<WherePart : SifWherePart, T>(
             if(triggerReason.isDelete()){
                 cacheImpl.delete(stringKey)
             } else if(triggerReason.isCreateOrUpdate()){
-                // TODO: FEATURE wangjie `缓存更新时间` @ 2025-02-03 12:36:35
+                // TODO: FEATURE wangjie `缓存更新时间，默认是 -1（永不过期）` @ 2025-02-03 12:36:35
                 cacheImpl.opsForValue().setIfPresent(stringKey, obj as Any)
             }
         }

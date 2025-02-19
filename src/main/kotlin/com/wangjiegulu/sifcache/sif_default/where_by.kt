@@ -9,6 +9,12 @@ class WhereByUserId(
 ): SifWherePart(arrayListOf(
     SifWhereEqFragment("uid", "$userId")
 ))
+class WhereByUsername(
+    username: String
+): SifWherePart(arrayListOf(
+    SifWhereEqFragment("un", username)
+))
+
 class WhereByBlockId(
     blockId: Long
 ): SifWherePart(arrayListOf(

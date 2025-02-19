@@ -4,8 +4,10 @@ import com.wangjiegulu.sifcache.basic.response.successJsonBody
 import com.wangjiegulu.sifcache.controller.aop.ControllerRedis
 import com.wangjiegulu.sifcache_lib.*
 import com.wangjiegulu.sifcache.model.BioBlock
+import com.wangjiegulu.sifcache.model.User
 import com.wangjiegulu.sifcache.sif_default.WhereByBlockId
 import com.wangjiegulu.sifcache.sif_default.WhereByUserId
+import com.wangjiegulu.sifcache.sif_default.WhereByUsername
 import com.wangjiegulu.sifcache.sif_default.keys_cx.SifKeysCX
 import com.wangjiegulu.sifcache.sif_default.keys_meta.SifKeysMeta
 import jakarta.annotation.Resource
@@ -28,6 +30,7 @@ class RedisTestController {
     companion object{
         // 测试 uid
         const val TEST_UID: Long = 1
+        const val TEST_USERNAME: String = "zhangsan"
     }
 
     private val logger: Logger = LoggerFactory.getLogger(RedisTestController::class.java)
@@ -170,5 +173,32 @@ class RedisTestController {
 
         return ResponseEntity.ok()
             .successJsonBody("{}")
+    }
+
+    @GetMapping("/getOrCalcUserByUserId")
+    fun getOrCalcUserByUserId(): ResponseEntity<String> {
+        val user = sifInstance.getOrCalc(SifKeysMeta.KEY_MT_USER_BY_UID, WhereByUserId(TEST_UID)){
+            User(TEST_UID, TEST_USERNAME, UUID.randomUUID().toString())
+        }
+
+        return ResponseEntity.ok()
+            .successJsonBody(user.toString())
+    }
+
+    @GetMapping("/getOrCalcUserByUsername")
+    fun getOrCalcUserByUsername(): ResponseEntity<String> {
+        val user = sifInstance.getOrCalc(SifKeysMeta.KEY_MT_USER_BY_USERNAME, WhereByUsername(TEST_USERNAME)){
+            User(TEST_UID, TEST_USERNAME, UUID.randomUUID().toString())
+        }
+        return ResponseEntity.ok()
+            .successJsonBody(user.toString())
+    }
+
+    @GetMapping("/calcUserByUserId")
+    fun calcUserByUserId(): ResponseEntity<String> {
+        val user = User(TEST_UID, TEST_USERNAME, UUID.randomUUID().toString())
+        sifInstance.set(SifKeysMeta.KEY_MT_USER_BY_UID, WhereByUserId(TEST_UID), user)
+        return ResponseEntity.ok()
+            .successJsonBody(user.toString())
     }
 }

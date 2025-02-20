@@ -11,8 +11,10 @@ import com.wangjiegulu.sifcache.sif_default.WhereByBlockId
 import com.wangjiegulu.sifcache.sif_default.WhereByToken
 import com.wangjiegulu.sifcache.sif_default.WhereByUserId
 import com.wangjiegulu.sifcache.sif_default.WhereByUsername
+import com.wangjiegulu.sifcache.sif_default.event.SIF_EVENT__DELETE_USER
 import com.wangjiegulu.sifcache_lib.redis.DefaultAssociateHandler
 import com.wangjiegulu.sifcache_lib.makeHandler
+import com.wangjiegulu.sifcache_lib.redis.DefaultRedisDeleteAssociateHandler
 import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.stereotype.Component
 
@@ -42,8 +44,14 @@ object SifKeysMeta : SifKeysLoader {
         "MT_UR_BY_UID",
         SIF_VALUE_TYPE_MT__USER,
         hashMapOf(
+            // 绑定数据类型接收通知
             makeHandler(SIF_VALUE_TYPE_MT__USER, DefaultAssociateHandler { arrayOf(
                 WhereByUserId(it.userId)
+            ) }),
+
+            // 绑定自定义事件接收通知
+            makeHandler(SIF_EVENT__DELETE_USER, DefaultRedisDeleteAssociateHandler{ arrayOf(
+                WhereByUserId(it.first)
             ) })
         )
     )
@@ -53,8 +61,14 @@ object SifKeysMeta : SifKeysLoader {
         "MT_UR_BY_UN",
         SIF_VALUE_TYPE_MT__USER,
         hashMapOf(
+            // 绑定数据类型接收通知
             makeHandler(SIF_VALUE_TYPE_MT__USER, DefaultAssociateHandler { arrayOf(
                 WhereByUsername(it.username)
+            ) }),
+
+            // 绑定自定义事件接收通知
+            makeHandler(SIF_EVENT__DELETE_USER, DefaultRedisDeleteAssociateHandler{ arrayOf(
+                WhereByUsername(it.second)
             ) })
         )
     )

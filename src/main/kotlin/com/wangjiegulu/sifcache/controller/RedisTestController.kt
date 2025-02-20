@@ -9,7 +9,9 @@ import com.wangjiegulu.sifcache.sif_default.WhereByBlockId
 import com.wangjiegulu.sifcache.sif_default.WhereByUserId
 import com.wangjiegulu.sifcache.sif_default.WhereByUsername
 import com.wangjiegulu.sifcache.sif_default.cx.SifKeysCX
+import com.wangjiegulu.sifcache.sif_default.event.SIF_EVENT__DELETE_USER
 import com.wangjiegulu.sifcache.sif_default.meta.SifKeysMeta
+import com.wangjiegulu.sifcache_lib.ext.SifPair
 import jakarta.annotation.Resource
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -200,5 +202,13 @@ class RedisTestController {
         sifInstance.set(SifKeysMeta.KEY_MT_USER_BY_UID, WhereByUserId(TEST_UID), user)
         return ResponseEntity.ok()
             .successJsonBody(user.toString())
+    }
+
+    // 不调用 delete 删除，而是通过通过 triggerAssociateHandle，使用 event 通知，让对应的 SifKey 来进行删除
+    @GetMapping("/triggerDeleteUserByUserId")
+    fun triggerDeleteUserByUserId(): ResponseEntity<String> {
+        sifInstance.triggerAssociateHandle(SIF_EVENT__DELETE_USER, SifPair(TEST_UID, TEST_USERNAME), TriggerReason.DELETE)
+        return ResponseEntity.ok()
+            .successJsonBody("User $TEST_UID DELETED!")
     }
 }

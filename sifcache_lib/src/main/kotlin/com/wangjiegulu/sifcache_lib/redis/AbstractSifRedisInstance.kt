@@ -188,6 +188,7 @@ abstract class AbstractSifRedisInstance(
         // 执行删除
         val deleted = cacheImpl.delete(stringKey)
         if (!deleted) {
+            logger.debug("delete failure, stringKey: $stringKey, maybe the key is not exist in cache")
             return
         }
 

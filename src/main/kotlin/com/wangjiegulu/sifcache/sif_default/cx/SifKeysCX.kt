@@ -1,4 +1,4 @@
-package com.wangjiegulu.sifcache.sif_default.keys_cx
+package com.wangjiegulu.sifcache.sif_default.cx
 
 import com.wangjiegulu.sifcache.app.sif.QUALIFIER_SIF_INSTANCE_DEFAULT
 import com.wangjiegulu.sifcache_lib.SifKeysLoader
@@ -8,7 +8,7 @@ import com.wangjiegulu.sifcache_lib.keyparts.SifValueTypePartString
 import com.wangjiegulu.sifcache_lib.makeHandler
 import com.wangjiegulu.sifcache.model.BioBlock
 import com.wangjiegulu.sifcache.sif_default.WhereByUserId
-import com.wangjiegulu.sifcache.sif_default.keys_meta.SIF_VALUE_TYPE_MT__BLOCK
+import com.wangjiegulu.sifcache.sif_default.meta.SIF_VALUE_TYPE_MT__BLOCK
 import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.stereotype.Component
 

@@ -1,4 +1,4 @@
-package com.wangjiegulu.sifcache.sif_default.keys_meta
+package com.wangjiegulu.sifcache.sif_default.meta
 
 import com.wangjiegulu.sifcache.app.sif.QUALIFIER_SIF_INSTANCE_DEFAULT
 import com.wangjiegulu.sifcache_lib.SifKeysLoader

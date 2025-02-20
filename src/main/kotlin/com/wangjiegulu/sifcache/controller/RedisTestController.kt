@@ -8,8 +8,8 @@ import com.wangjiegulu.sifcache.model.User
 import com.wangjiegulu.sifcache.sif_default.WhereByBlockId
 import com.wangjiegulu.sifcache.sif_default.WhereByUserId
 import com.wangjiegulu.sifcache.sif_default.WhereByUsername
-import com.wangjiegulu.sifcache.sif_default.keys_cx.SifKeysCX
-import com.wangjiegulu.sifcache.sif_default.keys_meta.SifKeysMeta
+import com.wangjiegulu.sifcache.sif_default.cx.SifKeysCX
+import com.wangjiegulu.sifcache.sif_default.meta.SifKeysMeta
 import jakarta.annotation.Resource
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory

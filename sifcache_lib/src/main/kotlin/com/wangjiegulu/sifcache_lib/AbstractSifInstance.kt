@@ -105,7 +105,7 @@ abstract class AbstractSifInstance<CacheImpl>(
                 associateKeys
             )
         } catch (e: Throwable) {
-            logger.error("_triggerValue", e)
+            logger.error("triggerAssociateHandle", e)
         }
     }
 

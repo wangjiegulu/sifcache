@@ -11,8 +11,7 @@ import com.wangjiegulu.sifcache.sif_default.WhereByBlockId
 import com.wangjiegulu.sifcache.sif_default.WhereByToken
 import com.wangjiegulu.sifcache.sif_default.WhereByUserId
 import com.wangjiegulu.sifcache.sif_default.WhereByUsername
-import com.wangjiegulu.sifcache_lib.impl.redis.DefaultAssociateHandler
-import com.wangjiegulu.sifcache_lib.impl.redis.DefaultRedisDeleteAssociateHandler
+import com.wangjiegulu.sifcache_lib.redis.DefaultAssociateHandler
 import com.wangjiegulu.sifcache_lib.makeHandler
 import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.stereotype.Component

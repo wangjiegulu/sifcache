@@ -1,4 +1,4 @@
-package com.wangjiegulu.sifcache_lib.impl.redis
+package com.wangjiegulu.sifcache_lib.redis
 
 import com.wangjiegulu.sifcache_lib.AbstractSifAssociateHandler
 import com.wangjiegulu.sifcache_lib.SifKey
@@ -7,7 +7,6 @@ import com.wangjiegulu.sifcache_lib.keyparts.SifWherePart
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.data.redis.core.RedisOperations
-import java.time.Duration
 
 /**
  * 该 AssociateHandler 级联处理数据方式

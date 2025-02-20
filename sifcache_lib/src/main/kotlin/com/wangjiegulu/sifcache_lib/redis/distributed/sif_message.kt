@@ -1,4 +1,4 @@
-package com.wangjiegulu.sifcache_lib.impl.redis.distributed
+package com.wangjiegulu.sifcache_lib.redis.distributed
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo
 import com.wangjiegulu.sifcache_lib.ext.NoArg

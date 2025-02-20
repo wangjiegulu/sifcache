@@ -1,7 +1,7 @@
-package com.wangjiegulu.sifcache_lib.impl.redis.distributed
+package com.wangjiegulu.sifcache_lib.redis.distributed
 
 import com.wangjiegulu.sifcache_lib.*
-import com.wangjiegulu.sifcache_lib.impl.redis.AbstractSifRedisInstance
+import com.wangjiegulu.sifcache_lib.redis.AbstractSifRedisInstance
 import com.wangjiegulu.sifcache_lib.keyparts.SifWherePart
 import com.wangjiegulu.sifcache_lib.SifAssociateHandler
 import com.wangjiegulu.sifcache_lib.SifEvent

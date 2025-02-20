@@ -3,7 +3,7 @@ package com.wangjiegulu.sifcache.sif_default.keys_cx
 import com.wangjiegulu.sifcache.app.sif.QUALIFIER_SIF_INSTANCE_DEFAULT
 import com.wangjiegulu.sifcache_lib.SifKeysLoader
 import com.wangjiegulu.sifcache_lib.SifStringKey
-import com.wangjiegulu.sifcache_lib.impl.redis.DefaultRedisDeleteAssociateHandler
+import com.wangjiegulu.sifcache_lib.redis.DefaultRedisDeleteAssociateHandler
 import com.wangjiegulu.sifcache_lib.keyparts.SifValueTypePartString
 import com.wangjiegulu.sifcache_lib.makeHandler
 import com.wangjiegulu.sifcache.model.BioBlock

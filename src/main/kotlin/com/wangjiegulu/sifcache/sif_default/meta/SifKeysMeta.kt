@@ -17,6 +17,7 @@ import com.wangjiegulu.sifcache_lib.makeHandler
 import com.wangjiegulu.sifcache_lib.redis.DefaultRedisDeleteAssociateHandler
 import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.stereotype.Component
+import java.time.Duration
 
 /////// DATA_TYPE 类型 1： META 数据类型(model) ///////
 val SIF_VALUE_TYPE_MT__LOGIN_STATUS = SifValueTypePartString<LoginStatus>("LG_ST")
@@ -43,6 +44,8 @@ object SifKeysMeta : SifKeysLoader {
     val KEY_MT_USER_BY_UID = SifStringKey<User, WhereByUserId>(
         "MT_UR_BY_UID",
         SIF_VALUE_TYPE_MT__USER,
+        Duration.ofHours(2)
+    ){
         hashMapOf(
             // 绑定数据类型接收通知
             makeHandler(SIF_VALUE_TYPE_MT__USER, DefaultAssociateHandler { arrayOf(
@@ -54,12 +57,13 @@ object SifKeysMeta : SifKeysLoader {
                 WhereByUserId(it.first)
             ) })
         )
-    )
+    }
 
     // 根据 用户名 缓存用户信息
     val KEY_MT_USER_BY_USERNAME = SifStringKey<User, WhereByUsername>(
         "MT_UR_BY_UN",
         SIF_VALUE_TYPE_MT__USER,
+    ){
         hashMapOf(
             // 绑定数据类型接收通知
             makeHandler(SIF_VALUE_TYPE_MT__USER, DefaultAssociateHandler { arrayOf(
@@ -71,6 +75,6 @@ object SifKeysMeta : SifKeysLoader {
                 WhereByUsername(it.second)
             ) })
         )
-    )
+    }
 
 }

@@ -7,6 +7,7 @@ import com.wangjiegulu.sifcache_lib.keyparts.SifWherePart
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.data.redis.core.RedisOperations
+import java.time.Duration
 
 /**
  * 该 AssociateHandler 级联处理数据方式
@@ -75,8 +76,8 @@ class DefaultAssociateHandler<WherePart : SifWherePart, T>(
             if(triggerReason.isDelete()){
                 cacheImpl.delete(stringKey)
             } else if(triggerReason.isCreateOrUpdate()){
-                // TODO: FEATURE wangjie `缓存更新时间，默认是 -1（永不过期）` @ 2025-02-03 12:36:35
-                cacheImpl.opsForValue().setIfPresent(stringKey, obj as Any)
+                // TODO: FEATURE wangjie `缓存更新时间，默认是 key 中的 defaultTimeout，最好能做到使用当前 key 剩余的超时时间` @ 2025-02-03 12:36:35
+                cacheImpl.opsForValue().setIfPresent(stringKey, obj as Any, associateSifKey.defaultTimeout)
             }
         }
     }

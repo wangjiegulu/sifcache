@@ -21,7 +21,7 @@ interface SifInstance {
         dataWherePart: WherePart,
 
         // 以下两个时间决定缓存有效时间长度（以短的为准）
-        timeout: Duration = Duration.ofMinutes(60), // 过期时间
+        timeout: Duration = key.defaultTimeout, // 过期时间，默认为 Key 中配置的默认 timeout
         lessThanDateTimeFunc: ((ValueType) -> LocalDateTime?)? = null, // 不超过这个时间点
 
         lockWhenCalc: Boolean = true, // 调用 calc 时是否需要加锁
@@ -39,7 +39,7 @@ interface SifInstance {
         value: ValueType,
 
         // 以下两个时间决定缓存有效时间长度（以短的为准）
-        timeout: Duration = Duration.ofMinutes(60), // 过期时间
+        timeout: Duration = key.defaultTimeout, // 过期时间，默认为 Key 中配置的默认 timeout
         lessThanDateTimeFunc: ((ValueType) -> LocalDateTime?)? = null, // 不超过这个时间点
         setCondition: SetCondition = SetCondition.FORCE // 设置的条件，默认为强制设置（不存 key 是否存在）
     )

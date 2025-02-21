@@ -1,8 +1,6 @@
 package com.wangjiegulu.sifcache.sif_default.meta
 
 import com.wangjiegulu.sifcache.app.sif.QUALIFIER_SIF_INSTANCE_DEFAULT
-import com.wangjiegulu.sifcache_lib.SifKeysLoader
-import com.wangjiegulu.sifcache_lib.SifStringKey
 import com.wangjiegulu.sifcache_lib.keyparts.SifValueTypePartString
 import com.wangjiegulu.sifcache.model.BioBlock
 import com.wangjiegulu.sifcache.model.LoginStatus
@@ -12,10 +10,11 @@ import com.wangjiegulu.sifcache.sif_default.WhereByToken
 import com.wangjiegulu.sifcache.sif_default.WhereByUserId
 import com.wangjiegulu.sifcache.sif_default.WhereByUsername
 import com.wangjiegulu.sifcache.sif_default.event.SIF_EVENT__DELETE_USER
+import com.wangjiegulu.sifcache_lib.*
 import com.wangjiegulu.sifcache_lib.redis.DefaultAssociateHandler
-import com.wangjiegulu.sifcache_lib.makeHandler
 import com.wangjiegulu.sifcache_lib.redis.DefaultRedisDeleteAssociateHandler
 import org.springframework.beans.factory.annotation.Qualifier
+import org.springframework.data.mapping.AssociationHandler
 import org.springframework.stereotype.Component
 import java.time.Duration
 
@@ -45,36 +44,29 @@ object SifKeysMeta : SifKeysLoader {
         "MT_UR_BY_UID",
         SIF_VALUE_TYPE_MT__USER,
         Duration.ofHours(2)
-    ){
-        hashMapOf(
-            // 绑定数据类型接收通知
-            makeHandler(SIF_VALUE_TYPE_MT__USER, DefaultAssociateHandler { arrayOf(
-                WhereByUserId(it.userId)
-            ) }),
+    )
+        // 绑定数据类型接收通知
+        .addHandler(SIF_VALUE_TYPE_MT__USER, DefaultAssociateHandler { arrayOf(
+            WhereByUserId(it.userId)
+        ) })
+        // 绑定自定义事件接收通知
+        .addHandler(SIF_EVENT__DELETE_USER, DefaultRedisDeleteAssociateHandler{ arrayOf(
+            WhereByUserId(it.first)
+        ) })
 
-            // 绑定自定义事件接收通知
-            makeHandler(SIF_EVENT__DELETE_USER, DefaultRedisDeleteAssociateHandler{ arrayOf(
-                WhereByUserId(it.first)
-            ) })
-        )
-    }
 
     // 根据 用户名 缓存用户信息
     val KEY_MT_USER_BY_USERNAME = SifStringKey<User, WhereByUsername>(
         "MT_UR_BY_UN",
         SIF_VALUE_TYPE_MT__USER,
-    ){
-        hashMapOf(
-            // 绑定数据类型接收通知
-            makeHandler(SIF_VALUE_TYPE_MT__USER, DefaultAssociateHandler { arrayOf(
-                WhereByUsername(it.username)
-            ) }),
-
-            // 绑定自定义事件接收通知
-            makeHandler(SIF_EVENT__DELETE_USER, DefaultRedisDeleteAssociateHandler{ arrayOf(
-                WhereByUsername(it.second)
-            ) })
-        )
-    }
+    )
+        // 绑定数据类型接收通知
+        .addHandler(SIF_VALUE_TYPE_MT__USER, DefaultAssociateHandler { arrayOf(
+            WhereByUsername(it.username)
+        ) })
+        // 绑定自定义事件接收通知
+        .addHandler(SIF_EVENT__DELETE_USER, DefaultRedisDeleteAssociateHandler{ arrayOf(
+            WhereByUsername(it.second)
+        ) })
 
 }

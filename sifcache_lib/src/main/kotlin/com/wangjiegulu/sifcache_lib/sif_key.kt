@@ -19,19 +19,25 @@ open class SifKey<ValueType, WherePart : SifWherePart>(
     // 第二部分：数据类型
     val valueTypePart: SifValueTypePart<ValueType>,
 
+    // 第三部分：条件（WherePart）
+
     // 当前 key 默认的过期时间
     val defaultTimeout: Duration = DEFAULT_KEY_TIMEOUT,
-
-    // 依赖的相关数据类型及对应的处理器（根据该列表来进行级联处理）
-//    val associateHandlers: Map<SifEvent<*>, SifAssociateHandler<*, *, *>>? = null,
-    createAssociateHandlers: (() -> Map<SifEvent<*>, SifAssociateHandler<*, *, *>>?)? = null
 ){
-    var associateHandlers: Map<SifEvent<*>, SifAssociateHandler<*, *, *>>? = null
-    init {
-        createAssociateHandlers?.let {
-            associateHandlers = it()
+    // 依赖的相关数据类型及对应的处理器（根据该列表来进行级联处理）
+    var associateHandlers: HashMap<SifEvent<*>, SifAssociateHandler<*, *, *>>? = null
+
+    fun <ValueType1, WherePart1 : SifWherePart> addHandler(
+        sifEvent: SifEvent<ValueType1>,
+        sifAssociateHandler: SifAssociateHandler<*, WherePart1, ValueType1>
+    ): SifKey<ValueType, WherePart> {
+        if(null == associateHandlers){
+            associateHandlers = hashMapOf()
         }
+        associateHandlers!![sifEvent] = sifAssociateHandler
+        return this
     }
+
     /**
      * 计算 key
      * 该 Key 在 redis 等中表示唯一的 Key
@@ -61,8 +67,7 @@ class SifStringKey<ValueType, WherePart : SifWherePart>(
     bizPartName: String,
     valueTypePart: SifValueTypePart<ValueType>,
     defaultTimeout: Duration = DEFAULT_KEY_TIMEOUT,
-    createAssociateHandlers: (() -> Map<SifEvent<*>, SifAssociateHandler<*, *, *>>?)? = null
-) : SifKey<ValueType, WherePart>(SifBizPartString(bizPartName), valueTypePart, defaultTimeout, createAssociateHandlers)
+) : SifKey<ValueType, WherePart>(SifBizPartString(bizPartName), valueTypePart, defaultTimeout)
 
 /**
  * SifKey 加载器

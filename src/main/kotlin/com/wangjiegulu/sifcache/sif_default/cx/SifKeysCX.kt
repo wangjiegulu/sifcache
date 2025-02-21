@@ -26,24 +26,18 @@ object SifKeysCX : SifKeysLoader {
         "SPD_BKS_A",
         SIF_VALUE_TYPE__BLOCKS,
         Duration.ofMinutes(15)
-    ){
-        hashMapOf(
-            makeHandler(SIF_VALUE_TYPE_MT__BLOCK, DefaultRedisDeleteAssociateHandler(false) {
-                arrayOf(
-                    WhereByUserId(it.ownerUserId)
-                )
-            })
-        )
-    }
+    )
+        .addHandler(SIF_VALUE_TYPE_MT__BLOCK, DefaultRedisDeleteAssociateHandler(false) {
+            arrayOf(
+                WhereByUserId(it.ownerUserId)
+            )
+        })
 
     // space detail blocks 缓存(测试) //
     val KEY_SPACE_DETAIL_BLOCKS_B = SifStringKey<List<BioBlock>, WhereByUserId>(
         "SPD_BKS_B",
         SIF_VALUE_TYPE__BLOCKS
-    ){
-        hashMapOf(
-            makeHandler(SIF_VALUE_TYPE_MT__BLOCK, DefaultRedisDeleteAssociateHandler { arrayOf(WhereByUserId(it.ownerUserId)) })
-        )
-    }
+    )
+        .addHandler(SIF_VALUE_TYPE_MT__BLOCK, DefaultRedisDeleteAssociateHandler { arrayOf(WhereByUserId(it.ownerUserId)) })
 
 }
